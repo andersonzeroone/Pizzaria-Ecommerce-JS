@@ -10,8 +10,12 @@ pizzaJson.map((item, index) => {
      pizzaItem.querySelector('a').addEventListener('click', (e)=>{
         e.preventDefault();
 
+        document.querySelector('.pizzaWindowArea').style.opacity = 0;
         document.querySelector('.pizzaWindowArea').style.display = 'flex';
 
+        setTimeout( () =>{
+            document.querySelector('.pizzaWindowArea').style.opacity = 1;
+        }, 200);
      })
 
     document.querySelector('.pizza-area').appendChild( pizzaItem);    

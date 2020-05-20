@@ -138,6 +138,7 @@ h1 {
 .pizzaWindowBody {
     width:900px;
     background-color:#FFF;
+    /* background-image: linear-gradient(to bottom, #141517, #232a2c, #34403f, #4d574f, #6d6d5e); */
     border-radius:10px;
     box-shadow:0px 0px 15px #999;
     display:flex;
