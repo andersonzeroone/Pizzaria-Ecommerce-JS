@@ -1,5 +1,8 @@
-pizzaJson.map((item, index) => {
+const  selector = (el) => document.querySelector(el); 
+let modalCount = 1;
 
+pizzaJson.map((item, index) => {
+    
     let pizzaItem = document.querySelector('.models .pizza-item').cloneNode(true);
 
     pizzaItem.setAttribute('data-key', index);
@@ -15,22 +18,33 @@ pizzaJson.map((item, index) => {
         
         console.log(pizzaJson[key]);
         
-        document.querySelector('.pizzaBig img').src = pizzaJson[key].img;
-        document.querySelector('.pizzaInfo h1').innerHTML = pizzaJson[key].name;
-        document.querySelector('.pizzaInfo--desc').innerHTML = pizzaJson[key].description;
-        document.querySelector('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price.toFixed(2)}`;
+        selector('.pizzaBig img').src = pizzaJson[key].img;
+        selector('.pizzaInfo h1').innerHTML = pizzaJson[key].name;
+        selector('.pizzaInfo--desc').innerHTML = pizzaJson[key].description;
+        selector('.pizzaInfo--actualPrice').innerHTML = `R$ ${pizzaJson[key].price.toFixed(2)}`;
 
-        document.querySelectorAll('pizzaInfo--size').forEach((size, sizeIndex) =>{
+
+        selector('.pizzaInfo--size.selected').classList.remove('selected');
+
+        document.querySelectorAll('.pizzaInfo--size').forEach((size, sizeIndex) =>{
+            if(sizeIndex == 2){
+                size.classList.add('selected');
+            }
+            
             size.querySelector('span').innerHTML= pizzaJson[key].sizes[sizeIndex];
         })
         
-        document.querySelector('.pizzaWindowArea').style.opacity = 0;
-        document.querySelector('.pizzaWindowArea').style.display = 'flex';
+       
+        selector('.pizzaInfo--qt').innerHTML = modalCount;
+
+        selector('.pizzaWindowArea').style.opacity = 0;
+        selector('.pizzaWindowArea').style.display = 'flex';
 
         setTimeout( () =>{
-            document.querySelector('.pizzaWindowArea').style.opacity = 1;
+            selector('.pizzaWindowArea').style.opacity = 1;
         }, 200);
      })
 
-    document.querySelector('.pizza-area').appendChild(pizzaItem);    
+    selector('.pizza-area').appendChild(pizzaItem);    
 })
+
