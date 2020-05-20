@@ -60,3 +60,23 @@ function handleCloseModal(){
 selectorAll('.pizzaInfo--cancelButton,.pizzaInfo--cancelMobileButton').forEach((item) =>{
         item.addEventListener('click',handleCloseModal);
     })
+
+selector('.pizzaInfo--qtmais').addEventListener('click',() =>{
+    modalCount++;
+    selector('.pizzaInfo--qt').innerHTML = modalCount;
+})
+
+selector('.pizzaInfo--qtmenos').addEventListener('click',() =>{
+    if( modalCount > 1){
+        modalCount--;
+        selector('.pizzaInfo--qt').innerHTML = modalCount;
+   }
+    
+})
+
+selectorAll('.pizzaInfo--size').forEach((size, sizeIndex) => {
+    size.addEventListener( 'click', (e) => {
+        selector('.pizzaInfo--size.selected').classList.remove('selected');
+        size.classList.add('selected');
+    })
+})
