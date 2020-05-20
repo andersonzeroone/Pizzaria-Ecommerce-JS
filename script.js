@@ -1,4 +1,6 @@
 const  selector = (el) => document.querySelector(el); 
+const  selectorAll = (el) => document.querySelectorAll(el); 
+
 let modalCount = 1;
 
 pizzaJson.map((item, index) => {
@@ -48,3 +50,13 @@ pizzaJson.map((item, index) => {
     selector('.pizza-area').appendChild(pizzaItem);    
 })
 
+function handleCloseModal(){
+    selector('.pizzaWindowArea').style.opacity = 0;
+    setTimeout( () =>{
+        selector('.pizzaWindowArea').style.display = 'none';
+    }, 500);
+}
+
+selectorAll('.pizzaInfo--cancelButton,.pizzaInfo--cancelMobileButton').forEach((item) =>{
+        item.addEventListener('click',handleCloseModal);
+    })
