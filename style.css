@@ -128,6 +128,7 @@ h1 {
     top:0;
     bottom:0;
     right:0;
+    color: black;
     background-color:rgba(255, 255, 255, 0.5);
     display:none;
     transition: all ease .5s;
@@ -138,7 +139,6 @@ h1 {
 .pizzaWindowBody {
     width:900px;
     background-color:#FFF;
-    /* background-image: linear-gradient(to bottom, #141517, #232a2c, #34403f, #4d574f, #6d6d5e); */
     border-radius:10px;
     box-shadow:0px 0px 15px #999;
     display:flex;
