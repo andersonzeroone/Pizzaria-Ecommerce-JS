@@ -170,12 +170,13 @@ h1 {
 }
 .pizzaInfo .pizzaInfo--desc {
     font-size:15px;
-    color:#999;
+    color:black;
     margin-top:10px;
     font-family:'Lato',Helvetica,Arial;
 }
 .pizzaInfo--sector {
-    color:#CCC;
+    color:black;
+    font-weight: bold;
     text-transform: uppercase;
     font-size:14px;
     margin-top:30px;
