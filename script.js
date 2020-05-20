@@ -1,5 +1,7 @@
 const  selector = (el) => document.querySelector(el); 
 const  selectorAll = (el) => document.querySelectorAll(el); 
+let cart = [];
+let modalKey = 0;
 
 let modalCount = 1;
 
@@ -17,7 +19,7 @@ pizzaJson.map((item, index) => {
         e.preventDefault();
 
         let  key = e.target.closest('.pizza-item').getAttribute('data-key');
-        
+        modalKey = key;
         console.log(pizzaJson[key]);
         
         selector('.pizzaBig img').src = pizzaJson[key].img;
@@ -79,4 +81,15 @@ selectorAll('.pizzaInfo--size').forEach((size, sizeIndex) => {
         selector('.pizzaInfo--size.selected').classList.remove('selected');
         size.classList.add('selected');
     })
+})
+
+selector('.pizzaInfo--addButton').addEventListener('click', ()=> {
+    let size = parseInt(selector('.pizzaInfo--size.selected').getAttribute('data-key'));
+
+    cart.push({
+        id: pizzaJson[modalKey].id,
+        size,
+        quant: modalCount
+    });
+    handleCloseModal();
 })
