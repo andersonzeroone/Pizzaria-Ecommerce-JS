@@ -111,10 +111,17 @@ function upDateCart(){
 
         selector('.cart').innerHTML = '';
 
+        let subTotal = 0;
+        let desconto = 0;
+        let total = 0;
+
         for( let i in cart ){
             let pizzaItem = pizzaJson.find((item) => item.id == cart[i].id);
-            let cartItem = selector('.models .cart--item').cloneNode(true);
             
+            subTotal += pizzaItem.price * cart[i].quant;
+           
+            let cartItem = selector('.models .cart--item').cloneNode(true);
+            let pizzaUniprice = pizzaItem.price
             let pizzaSizename;
             switch(cart[i].size){
                 case 0:
@@ -129,14 +136,38 @@ function upDateCart(){
                     break;
             }
 
-            let pizzaName = `${pizzaItem.name} - ${pizzaSizename}`;
+            let pizzaName = `${pizzaItem.name}- ${pizzaSizename} Uni.: ${pizzaUniprice}`;
 
             cartItem.querySelector('img').src = pizzaItem.img;
             cartItem.querySelector('.cart--item-nome').innerHTML = pizzaName;
             cartItem.querySelector('.cart--item--qt').innerHTML = cart[i].quant;
 
+            cartItem.querySelector('.cart--item-qtmenos').addEventListener('click', () =>{
+                if( cart[i].quant > 1){
+                    cart[i].quant--;
+                    
+                }else{
+                    cart.splice(i,1);
+                }
+                 upDateCart()
+            })
+
+            cartItem.querySelector('.cart--item-qtmais').addEventListener('click', () =>{
+
+                cart[i].quant++;
+                upDateCart()
+            })
+
             selector('.cart').appendChild(cartItem);
         }
+
+        desconto = subTotal * 0.1;
+        total = subTotal - desconto;
+
+        selector('.subtotal span:last-child').innerHTML = `$R ${subTotal.toFixed(2)}`;
+        selector('.desconto span:last-child').innerHTML = `$R ${desconto.toFixed(2)}`;
+        selector('.total span:last-child').innerHTML = `$R ${total.toFixed(2)}`;
+
     }else{
         selector('aside').classList.remove('show');
     }
