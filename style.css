@@ -53,6 +53,7 @@ aside.show {
 }
 .cart--area {
     padding:20px;
+    color: black;
 }
 main {
     flex:1;
@@ -271,6 +272,7 @@ h1 {
     display:flex;
     align-items:center;
     margin:10px 0;
+    color: black;
 }
 .cart--item img {
     width:40px;
@@ -322,12 +324,13 @@ h1 {
     padding:20px 30px;
     border-radius:20px;
     background-color:#48d05f;
-    color:#FFF;
+    color:black;
     cursor:pointer;
     text-align:center;
     margin-top:20px;
     border:2px solid #63f77c;
     transition: all ease .2s;
+    font-weight: bold;
 }
 .cart--finalizar:hover {
     background-color:#35af4a;
