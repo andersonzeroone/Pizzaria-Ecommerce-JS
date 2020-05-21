@@ -101,4 +101,18 @@ selector('.pizzaInfo--addButton').addEventListener('click', ()=> {
         });
     }
     handleCloseModal();
+
+    upDateCart();
 })
+
+function upDateCart(){
+    if(cart.length > 0){
+        selector('aside').classList.add('show');
+
+        for( let i in cart ){
+            let pizzaItem = pizzaJson.find((item) => item.id == cart[i].id);
+        }
+    }else{
+        selector('aside').classList.remove('show');
+    }
+}
